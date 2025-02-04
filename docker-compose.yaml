@@ -1,0 +1,17 @@
+
+services:
+  sqlserver:
+    working_dir: /adventure_works
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      - SA_PASSWORD=YourStrong!Passw0rd
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - ./adventure_works:/adventure_works
+
+volumes:
+  sqlserver_data:
